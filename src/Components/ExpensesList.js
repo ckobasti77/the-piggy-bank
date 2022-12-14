@@ -9,11 +9,15 @@ const ExpensesList = ({ expensesList, setExpensesList, currency, theme }) => {
   };
 
   return (
-    <div className="w-full py-3 px-1 max-h-[66.67%] lista z-30 overflow-y-scroll dark:text-white">
+    <div className="w-full py-3 px-1 h-8/4 lista z-30 overflow-y-scroll dark:text-white">
       {expensesList.map((expense, index) => {
         return (
           <div
-            className={theme === 'dark' ? "w-full h-[20%] single-expense-dark flex justify-between rounded-full p-2 my-3 dark:text-white" : "w-full h-[20%] single-expense flex justify-between rounded-full p-2 my-3 dark:text-white"}
+            className={
+              theme === "dark"
+                ? "w-full h-[20%] single-expense-dark flex justify-between rounded-full p-2 my-3 dark:text-white"
+                : "w-full h-[20%] single-expense flex justify-between rounded-full p-2 my-3 dark:text-white"
+            }
             key={index}
           >
             <div className="flex justify-between w-11/12">
@@ -26,7 +30,11 @@ const ExpensesList = ({ expensesList, setExpensesList, currency, theme }) => {
               </span>
             </div>
             <button
-              className={theme === 'dark' ? "w-1/12 rounded-full delete-expense-dark pl-1 px-5 hover:text-[#4b0082]" : "w-1/12 rounded-full delete-expense pl-1 px-5 hover:text-[#4b0082]"}
+              className={
+                theme === "dark"
+                  ? "w-1/12 rounded-full delete-expense-dark pl-1 px-5 hover:text-[#4b0082]"
+                  : "w-1/12 rounded-full delete-expense pl-1 px-5 hover:text-[#4b0082]"
+              }
               title={`Remove '${expense.title}' expense.`}
               onClick={() => deleteExpense(index)}
             >
