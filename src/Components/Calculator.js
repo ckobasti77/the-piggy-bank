@@ -16,6 +16,7 @@ const Calculator = ({
   netIncPercentage,
   expensesPercentage,
   finalIncPercentage,
+  theme
 }) => {
   const [expensesList, setExpensesList] = useState([]);
 
@@ -56,6 +57,7 @@ const Calculator = ({
     setCalculated(!calculated);
     setSalary("");
     setExpensesList([]);
+    setTotalExpenses(0)
   };
 
   const [final, setFinal] = useState('')
@@ -67,12 +69,12 @@ const Calculator = ({
   return (
     <div className="flex flex-col justify-between items-center h-full w-5/6">
       <div className="w-full h-3/12 z-40">
-        <div className="w-full flex rounded-full my-3 currencies py-2 px-4 text-center justify-between">
+        <div className={theme === 'dark' ? "w-full flex rounded-full my-3 currencies-dark py-2 px-4 text-center justify-between" : "w-full flex rounded-full my-3 currencies py-2 px-4 text-center justify-between"}>
           <button
             className={
               currency === "€"
-                ? "active-button rounded-full py-1"
-                : "rounded-full py-1"
+                ? "active-button text-[#4b0082] rounded-full py-1 w-[30%]"
+                : "rounded-full py-1 w-[30%]"
             }
             onClick={() => changeCurrency("€")}
             title="Euro"
@@ -82,8 +84,8 @@ const Calculator = ({
           <button
             className={
               currency === "$"
-                ? "active-button rounded-full py-1"
-                : "rounded-full py-1"
+                ? "active-button text-[hsl(275,100%,25%)] rounded-full py-1 w-[30%]"
+                : "rounded-full py-1 w-[30%]"
             }
             onClick={() => changeCurrency("$")}
             title="American dollar"
@@ -93,8 +95,8 @@ const Calculator = ({
           <button
             className={
               currency === "£"
-                ? "active-button rounded-full py-1"
-                : "rounded-full py-1"
+                ? "active-button text-[#4b0082] rounded-full py-1 w-[30%]"
+                : "rounded-full py-1 w-[30%]"
             }
             onClick={() => changeCurrency("£")}
             title="Australian dollar"
@@ -102,12 +104,12 @@ const Calculator = ({
             GBP
           </button>
         </div>
-        <div className="w-full flex rounded-full my-3 timespans py-2 px-4 text-xs text-center justify-between">
+        <div className={theme === 'dark' ? "w-full flex rounded-full my-3 timespans-dark py-2 px-4 text-xs text-center justify-between" : "w-full flex rounded-full my-3 timespans py-2 px-4 text-xs text-center justify-between"}>
           <button
             className={
               timespan === "annual"
-                ? "active-button rounded-full py-1"
-                : "rounded-full py-1"
+                ? "active-button text-[#4b0082] rounded-full py-1 w-[30%]"
+                : "rounded-full py-1 w-[30%]"
             }
             onClick={() => {
               changeTimespan("annual");
@@ -118,8 +120,8 @@ const Calculator = ({
           <button
             className={
               timespan === "monthly"
-                ? "active-button rounded-full py-1"
-                : "rounded-full py-1"
+                ? "active-button text-[#4b0082] rounded-full py-1 w-[30%]"
+                : "rounded-full py-1 w-[30%]"
             }
             onClick={() => {
               changeTimespan("monthly");
@@ -130,8 +132,8 @@ const Calculator = ({
           <button
             className={
               timespan === "weekly"
-                ? "active-button rounded-full py-1"
-                : "rounded-full py-1"
+                ? "active-button text-[#4b0082] rounded-full py-1"
+                : "rounded-full py-1 w-[30%]"
             }
             onClick={() => {
               changeTimespan("weekly");
@@ -144,27 +146,27 @@ const Calculator = ({
       {calculated ? (
         <div className="h-full w-full flex flex-col justify-start items-between my-5 p-[1%]">
           <div
-            className={`h-[17.5%] my-[2.5%] w-full rounded-full single-chart flex items-center justify-center p-3`}
+            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-full rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-full rounded-full single-chart flex items-center justify-center p-3`}
           >
             100%
           </div>
           <div
-            className={`h-[17.5%] my-[2.5%] w-[${tax}%] rounded-full single-chart flex items-center justify-center p-3`}
+            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-[20%] rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-[20%] rounded-full single-chart flex items-center justify-center p-3`}
           >
             {tax}%
           </div>
           <div
-            className={`h-[17.5%] my-[2.5%] w-[${netIncPercentage}%] rounded-full single-chart flex items-center justify-center p-3`}
+            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-[80%] rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-[80%] rounded-full single-chart flex items-center justify-center p-3`}
           >
             {netIncPercentage}%
           </div>
           <div
-            className={`h-[17.5%] my-[2.5%] w-[6%] rounded-full single-chart flex items-center justify-center p-3`}
+            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-[5%] rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-[5%] rounded-full single-chart flex items-center justify-center p-3`}
           >
             {expensesPercentage}%
           </div>
           <div
-            className={`h-[17.5%] my-[2.5%] w-[${final}%] rounded-full single-chart flex items-center justify-center p-3`}
+            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-[75%] rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-[75%] rounded-full single-chart flex items-center justify-center p-3`}
           >
             {finalIncPercentage}%
           </div>
@@ -173,15 +175,15 @@ const Calculator = ({
         <div className="h-full flex flex-col justify-between">
           <div className="mt-2 pl-1 w-full">
             <label htmlFor="salary" className="pl-1">
-              Enter your <span className="indigo">{timespan}</span> GROSS income
-              in <span className="indigo">{currency}</span>:
+              Enter your <span className="text-[#4b0082] underline font-bold">{timespan}</span> GROSS income
+              in <span className="text-[#4b0082] underline font-bold">{currency}</span>:
             </label>
             <div className="w-full flex justify-between">
               <input
                 type="text"
                 name="salary"
                 id="salary"
-                className="mt-1 w-full rounded-full"
+                className={theme === 'dark' ? "mt-1 w-full rounded-full salary-dark dark:bg-[#131419] dark:text-white bg-[#f5f4f7] border-none" : "mt-1 w-full rounded-full salary dark:bg-[#131419] dark:text-white bg-[#f5f4f7] border-none"}
                 value={salary}
                 onChange={(e) => {
                   setSalary(e.target.value);
@@ -197,13 +199,14 @@ const Calculator = ({
               totalExpenses={totalExpenses}
               expensesList={expensesList}
               setExpensesList={setExpensesList}
+              theme={theme}
             />
           </div>
         </div>
       )}
       {!calculated ? (
         <button
-          className="w-full text-white rounded-full h-1/12 py-1 px-2 mt-2 calculate-button"
+          className={theme === 'dark' ? "w-full text-white rounded-full h-1/12 py-1 px-2 mt-2 calculate-button-dark translate-y-[-5px] hover:translate-y-[0px] border-[1px] border-none bg-[#4b0082]" : "w-full text-white rounded-full h-1/12 py-1 px-2 mt-2 calculate-button translate-y-[-5px] hover:translate-y-[0px] border-[1px] border-none bg-[#4b0082]"}
           onClick={() => {
             calculate();
           }}
@@ -212,7 +215,7 @@ const Calculator = ({
         </button>
       ) : (
         <button
-          className="w-full text-white rounded-full h-1/12 py-1 px-2 mt-2 calculate-button"
+          className={theme === 'dark' ? "w-full text-white rounded-full h-1/12 py-1 px-2 mt-2 calculate-button-dark translate-y-[-5px] hover:translate-y-[0px] border-[1px] border-none bg-[#4b0082]" : "w-full text-white rounded-full h-1/12 py-1 px-2 mt-2 calculate-button translate-y-[-5px] hover:translate-y-[0px] border-[1px] border-none bg-[#4b0082]"}
           onClick={() => reset()}
         >
           Reset

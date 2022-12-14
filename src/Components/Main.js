@@ -5,7 +5,7 @@ import pound from "../public/pound.png";
 import Calculator from "./Calculator";
 import Table from "./Table";
 
-const Main = () => {
+const Main = ({ theme }) => {
   const [salary, setSalary] = useState("");
   const [calculate, setCalculate] = useState(false);
   const [currency, setCurrency] = useState("€");
@@ -65,7 +65,7 @@ const Main = () => {
       setDialyExpenses(totalExpenses / 7);
 
     }
-  }, [timespan, salary, totalExpenses]);
+  }, [timespan, salary, totalExpenses, calculated]);
 
   useEffect(() => {
     if (timespan === "annual") {
@@ -103,7 +103,7 @@ const Main = () => {
         setTax("30");
       }
     }
-  }, [annualGross, timespan, totalExpenses, salary]);
+  }, [annualGross, timespan, totalExpenses, salary, calculated]);
 
   
   useEffect(() => {
@@ -126,7 +126,7 @@ const Main = () => {
         )
       );
     }
-  }, [tax]);
+  }, [tax, calculated]);
   
   useEffect(() => {
     if (timespan === "annual") {
@@ -167,10 +167,10 @@ const Main = () => {
   const [calculated, setCalculated] = useState(false);
 
   return (
-    <div className="container m-auto h-5/6 w-4/6 rounded-3xl p-3 main-div tracking-wide">
+    <div className={theme === 'dark' ?  "container m-auto h-5/6 w-4/6 rounded-3xl dark:bg-[#131419] bg-[#f5f4f7] p-3 main-div-dark tracking-wide z-50" : "container m-auto h-5/6 w-4/6 rounded-3xl dark:bg-[#131419] bg-[#f5f4f7] p-3 main-div tracking-wide z-50"}>
       <div className="flex h-full">
         {!calculated ? (
-          <div className="h-full main-left p-3">
+          <div className="h-full main-left p-3 w-[59.5%]">
             <div className="flex justify-center items-center w-full h-full">
               <img
                 src={euro}
@@ -214,13 +214,18 @@ const Main = () => {
               monthlyExpenses={monthlyExpenses}
               weeklyExpenses={weeklyExpenses}
               dialyExpenses={dialyExpenses}
+              theme={theme}
             />
             <div className="h-[30%] w-full rounded-2xl flex justify-between mt-1">
               <div
                 className={
-                  tax === "10"
-                    ? "h-[100%] w-[30%] active-tax rounded-xl flex flex-col justify-between items-center p-5"
-                    : "h-[100%] w-[30%] inactive-tax rounded-xl flex flex-col justify-between items-center p-5"
+                  theme === 'dark' ? 
+                    tax === "10"
+                      ? "h-[100%] w-[30%] active-tax-dark rounded-xl flex flex-col justify-between items-center p-5"
+                      : "h-[100%] w-[30%] inactive-tax-dark rounded-xl flex flex-col justify-between items-center p-5" : 
+                    tax === "10"
+                      ? "h-[100%] w-[30%] active-tax rounded-xl flex flex-col justify-between items-center p-5"
+                      : "h-[100%] w-[30%] inactive-tax rounded-xl flex flex-col justify-between items-center p-5"
                 }
               >
                 <span className="text-center text-l">Salary:</span>
@@ -228,15 +233,19 @@ const Main = () => {
                   0{currency} to 4999{currency}
                 </span>
                 <span className="font-bold">
-                  <span className="text-center text-2xl indigo-table">10%</span>
+                  <span className="text-center text-2xl text-[#4b0082] font-bold">10%</span>
                   TAX
                 </span>
               </div>
               <div
                 className={
-                  tax === "20"
-                    ? "h-[100%] w-[30%] active-tax rounded-xl flex flex-col justify-between items-center p-5"
-                    : "h-[100%] w-[30%] inactive-tax rounded-xl flex flex-col justify-between items-center p-5"
+                  theme === 'dark' ? 
+                    tax === "20"
+                      ? "h-[100%] w-[30%] active-tax-dark rounded-xl flex flex-col justify-between items-center p-5"
+                      : "h-[100%] w-[30%] inactive-tax-dark rounded-xl flex flex-col justify-between items-center p-5" : 
+                    tax === "20"
+                      ? "h-[100%] w-[30%] active-tax rounded-xl flex flex-col justify-between items-center p-5"
+                      : "h-[100%] w-[30%] inactive-tax rounded-xl flex flex-col justify-between items-center p-5"
                 }
               >
                 <span className="text-center text-l">Salary:</span>
@@ -244,7 +253,7 @@ const Main = () => {
                   5000{currency} to 14999{currency}
                 </span>
                 <span className="font-bold">
-                  <span className="text-center text-2xl indigo-table">20%</span>
+                  <span className="text-center text-2xl text-[#4b0082] font-bold">20%</span>
                   TAX
                 </span>
               </div>
@@ -260,15 +269,15 @@ const Main = () => {
                   15000{currency} and higher
                 </span>
                 <span className="font-bold">
-                  <span className="text-center text-2xl indigo-table">30%</span>
+                  <span className="text-center text-2xl text-[#4b0082] font-bold">30%</span>
                   TAX
                 </span>
               </div>
             </div>
           </div>
         )}
-        <div className="main-center h-[90%] my-auto rounded-full bg-white"></div>
-        <div className="h-full main-right p-6 flex justify-center">
+        <div className={theme === 'dark' ? "main-center-dark h-[90%] w-[1%] my-auto rounded-full bg-white dark:bg-[#131419]" : "main-center h-[90%] w-[1%] my-auto rounded-full bg-white dark:bg-[#131419]"}></div>
+        <div className="h-full main-right p-6 flex justify-center w-[39.5%]">
           <Calculator
             currency={currency}
             timespan={timespan}
@@ -284,6 +293,7 @@ const Main = () => {
             netIncPercentage={netIncPercentage}
             expensesPercentage={expensesPercentage}
             finalIncPercentage={finalIncPercentage}
+            theme={theme}
           />
         </div>
       </div>

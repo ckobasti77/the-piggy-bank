@@ -1,7 +1,7 @@
 import React from "react";
 import { BsBackspace } from "react-icons/bs";
 
-const ExpensesList = ({ expensesList, setExpensesList, currency }) => {
+const ExpensesList = ({ expensesList, setExpensesList, currency, theme }) => {
   const deleteExpense = (index) => {
     let newList = expensesList;
     newList.splice(index, 1);
@@ -9,11 +9,11 @@ const ExpensesList = ({ expensesList, setExpensesList, currency }) => {
   };
 
   return (
-    <div className="w-full py-3 px-1 max-h-[66.67%] overflow-y-scroll z-30">
+    <div className="w-full py-3 px-1 max-h-8/12 lista z-30">
       {expensesList.map((expense, index) => {
         return (
           <div
-            className="w-full h-[20%] single-expense flex justify-between rounded-full p-2 my-3"
+            className={theme === 'dark' ? "w-full h-[20%] single-expense-dark flex justify-between rounded-full p-2 my-3" : "w-full h-[20%] single-expense flex justify-between rounded-full p-2 my-3"}
             key={index}
           >
             <div className="flex justify-between w-11/12">
@@ -26,7 +26,7 @@ const ExpensesList = ({ expensesList, setExpensesList, currency }) => {
               </span>
             </div>
             <button
-              className="w-1/12 rounded-full delete-expense pl-1 px-5"
+              className="w-1/12 rounded-full delete-expense pl-1 px-5 hover:text-[#4b0082]"
               title={`Remove '${expense.title}' expense.`}
               onClick={() => deleteExpense(index)}
             >

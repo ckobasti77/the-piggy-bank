@@ -11,34 +11,35 @@ const Table = ({
   annualExpenses,
   monthlyExpenses,
   weeklyExpenses,
-  dialyExpenses
+  dialyExpenses,
+  theme
 }) => {
   return (
-    <div className="w-full h-[68%] mt-2 mb-4 mx-4 text-[0.7rem] rounded-2xl table">
+    <div className={theme === 'dark' ? "w-full h-[68%] mt-2 mb-4 mx-4 text-[0.7rem] rounded-2xl table-dark" : "w-full h-[68%] mt-2 mb-4 mx-4 text-[0.7rem] rounded-2xl table"}>
       <div className="w-full h-[16%] pb-[3%] px-[2%] my-[2%] bg-transparent flex rounded-full text-center">
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-bold rounded-full table-timespan">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-bold rounded-full table-timespan-dark" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-bold rounded-full table-timespan"}>
           <img src={logo} alt="logo" className="w-[40px]" />
         </span>
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Gross <br />
           income
         </span>
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Tax
         </span>
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Net <br />
           income
         </span>
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Expenses
         </span>
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Final income
         </span>
       </div>
       <div className="w-full h-[16%] pb-[3%] px-[2%] my-[2%] bg-transparent flex rounded-full text-center">
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Annual
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
@@ -60,7 +61,7 @@ const Table = ({
         </span>
       </div>
       <div className="w-full h-[16%] pb-[3%] px-[2%] my-[2%] bg-transparent flex rounded-full text-center">
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Monthly
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
@@ -82,7 +83,7 @@ const Table = ({
         </span>
       </div>
       <div className="w-full h-[16%] pb-[3%] px-[2%] my-[2%] bg-transparent flex rounded-full text-center">
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Weekly
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
@@ -104,7 +105,7 @@ const Table = ({
         </span>
       </div>
       <div className="w-full h-[16%] pb-[3%] px-[2%] my-[2%] bg-transparent flex rounded-full text-center">
-        <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head rounded-full">
+        <span className={theme === 'dark' ? "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head-dark text-[#4b0082] rounded-full" : "w-[16%] mx-[2%] h-full flex justify-center items-center font-medium t-side-head text-[#4b0082] rounded-full"}>
           Dialy
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">

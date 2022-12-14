@@ -8,58 +8,47 @@ body {
   font-family: "Roboto";
 }
 
-.wrapper {
-  background-color: #f6f5f8;
-}
-
 .main-div {
-  border: px solid #4b0082;
-  background-color: #f5f4f7;
   box-shadow: 20px 20px 30px 3px rgba(134, 134, 135, 0.35),
     -3px -3px 3px 3px rgba(255, 255, 255, 1);
 }
 
-.main-left {
-  width: 59.5%;
+.main-div-dark {
+  box-shadow: 5px 5px 20px rgba(0,0,0, 0.5),
+    -5px -5px 15px rgba(255, 255, 255, 0.05);
 }
 
 .main-center {
-  width: 1%;
   box-shadow: inset 3px 3px 3px 0px rgba(134, 134, 135, 0.75),
     inset -1px -1px 2px 1px rgba(255, 255, 255, 1);
 }
 
-.main-right {
-  width: 39.5%;
-}
-
-.tax-rules {
-  color: rgb(75, 0, 130);
+.main-center-dark {
+  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 3px rgba(255, 255, 255, 0.05);
 }
 
 .currencies,
 .timespans,
 .add-expense,
-.tax-rules,
 .single-expense,
 .table,
 .table-timespan,
-.inactive-tax {
+.inactive-tax,
+.switch-dark {
   box-shadow: 5px 5px 5px -1px rgba(134, 134, 135, 0.35),
     -3px -2px 3px 1px rgba(255, 255, 255, 1);
 }
 
-.add-expense:hover {
-  animation: plusRotate 0.3s ease-in-out;
-}
-
-.plus {
-  color: #4b0082;
-}
-
-.currencies button,
-.timespans button {
-  width: 30%;
+.currencies-dark,
+.timespans-dark,
+.add-expense-dark,
+.single-expense-dark,
+.table-dark,
+.table-timespan-dark,
+.inactive-tax-dark {
+  box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.5),
+  -3px -2px 3px 1px rgba(255, 255, 255, 0.05);
 }
 
 .currencies button:hover,
@@ -69,69 +58,78 @@ body {
     inset -1px -1px 2px 1px rgba(255, 255, 255, 1);
 }
 
+.currencies-dark button:hover,
+.timespans-dark button:hover {
+  
+}
+
 .active-button,
-.expense-title,
-.expense-value,
-.t-side-head {
-  color: rgb(75, 0, 130);
+.t-side-head,
+.active-tax {
   box-shadow: inset 3px 3px 3px 0px rgba(134, 134, 135, 0.75),
     inset -1px -1px 2px 1px rgba(255, 255, 255, 1);
   font-weight: 700;
 }
 
-.expense-title,
-.expense-value {
-  font-weight: 500 !important;
+.active-tax,
+.active-button,
+.t-side-head-dark,
+.switch-light {
+  box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.5),
+    inset -3px -3px 5px rgba(255, 255, 255, 0.05);
 }
 
-#salary,
-#expense-value,
-#expense-title
+.salary,
+.expense-value,
+.expense-title
  {
   box-shadow: inset 3px 3px 5px 0px rgba(134, 134, 135, 0.75),
     inset -2px -2px 1px 2px rgba(255, 255, 255, 1);
-  background-color: #f5f4f7;
-  border: none;
-}
-.active-tax {
-  box-shadow: inset 3px 3px 5px 0px rgba(75, 0, 130, 0.75),
-    inset -2px -2px 1px 2px rgba(241, 229, 250, 1);
-  background-color: #f5f4f7;
   border: none;
 }
 
+.salary-dark,
+.expense-value-dark,
+.expense-title-dark {
+  box-shadow: inset 3px 3px 5px 0px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 1px 2px rgba(255, 255, 255, 0.05);
+  border: none;
+}
+
+/* .active-tax {
+  box-shadow: inset 3px 3px 5px 0px rgba(75, 0, 130, 0.75),
+    inset -2px -2px 1px 2px rgba(241, 229, 250, 1);
+} */
+
 .single-chart {
-  box-shadow: 5px 5px 5px -1px rgba(75, 0, 130, 0.35),
-    -3px -2px 3px 1px rgba(241, 229, 250, 1);
+  box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.35),
+    -3px -2px 3px 1px rgba(255, 255, 255, 1);
+}
+
+.single-chart-dark {
+  box-shadow: 5px 5px 5px -1px rgba(0, 0, 0, 0.5),
+    -3px -2px 3px 1px rgba(255, 255, 255, 0.05);
 }
 
 .delete-expense:hover {
   transition: all 0.1s ease-in-out;
   box-shadow: inset 3px 3px 7.5px 0px rgba(134, 134, 135, 0.75);
-  color: #4b0082;
-}
-
-.indigo {
-  color: #4b0082;
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.indigo-table {
-  color: #4b0082;
-  font-weight: bold;
 }
 
 .calculate-button {
-  transform: translateY(-5px);
   box-shadow: 0px 12.5px 10px -5px rgba(134, 134, 135, 1);
   transition: all 0.2s ease-in-out;
-  background-color: rgb(75, 0, 130);
-  border: 1px solid rgb(134, 134, 135);
 }
 
 .calculate-button:hover {
-  transform: translateY(0px);
   box-shadow: 0 0 0 0 rgba(134, 134, 135, 0.75);
-  border: 1px solid transparent;
+}
+
+.calculate-button-dark {
+  box-shadow: 0px 12.5px 10px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+}
+
+.calculate-button-dark:hover {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
 }

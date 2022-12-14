@@ -8,6 +8,7 @@ const Expenses = ({
   totalExpenses,
   expensesList,
   setExpensesList,
+  theme
 }) => {
   const [expenseTitle, setExpenseTitle] = useState("");
   const [expenseValue, setExpenseValue] = useState("");
@@ -32,6 +33,7 @@ const Expenses = ({
         expensesList={expensesList}
         setExpensesList={setExpensesList}
         currency={currency}
+        theme={theme}
       />
       <form
         onSubmit={(e) => {
@@ -43,12 +45,12 @@ const Expenses = ({
         <div className="flex w-full">
           <div className="flex flex-col w-3/6 mr-2">
             <label htmlFor="expense-title" className="pl-1">
-              Expense <span className="indigo">({timespan})</span>:
+              Expense <span className="indigo text-[1rem] text-[#4b0082] underline font-bold">({timespan})</span>:
             </label>
             <input
               type="text"
               id="expense-title"
-              className="w-full py-1 px-2 rounded-full"
+              className={theme === 'dark' ? "w-full py-1 px-2 rounded-full expense-title-dark dark:bg-[#131419] dark:text-white bg-[#f5f4f7] border-none" : "w-full py-1 px-2 rounded-full expense-title dark:bg-[#131419] dark:text-white bg-[#f5f4f7] border-none"}
               value={expenseTitle}
               onChange={(e) => {
                 setExpenseTitle(e.target.value);
@@ -57,12 +59,12 @@ const Expenses = ({
           </div>
           <div className="flex flex-col w-3/6">
             <label htmlFor="expense-value" className="pl-1">
-              Value in <span className="indigo">{currency}:</span>
+              Value in <span className="indigo text-[1rem] text-[#4b0082] underline font-bold">{currency}:</span>
             </label>
             <input
               type="text"
               id="expense-value"
-              className="w-full py-1 px-2 rounded-full"
+              className={theme === 'dark' ? "w-full py-1 px-2 rounded-full expense-value-dark dark:bg-[#131419] dark:text-white bg-[#f5f4f7] border-none" : "w-full py-1 px-2 rounded-full expense-value dark:bg-[#131419] dark:text-white bg-[#f5f4f7] border-none"}
               value={expenseValue}
               onChange={(e) => {
                 setExpenseValue(e.target.value);
@@ -70,8 +72,8 @@ const Expenses = ({
             />
           </div>
         </div>
-        <button className="w-full rounded-full my-3 add-expense py-2 px-4">
-          Add expense <span className="plus">+</span>
+        <button className={theme === 'dark' ? "w-full rounded-full my-3 add-expense-dark py-2 px-4" : "w-full rounded-full my-3 add-expense py-2 px-4"}>
+          Add expense <span className="plus text-[#4b0082]">+</span>
         </button>
       </form>
     </div>
