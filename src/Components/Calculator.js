@@ -67,7 +67,7 @@ const Calculator = ({
   }, [netIncPercentage])
 
   return (
-    <div className="flex flex-col justify-between items-center h-full w-5/6">
+    <div className="flex flex-col justify-between items-center max-h-full w-5/6">
       <div className="w-full h-3/12 z-40">
         <div className={theme === 'dark' ? "w-full flex rounded-full my-3 currencies-dark py-2 px-4 text-center justify-between" : "w-full flex rounded-full my-3 currencies py-2 px-4 text-center justify-between"}>
           <button
@@ -151,12 +151,12 @@ const Calculator = ({
             100%
           </div>
           <div
-            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-[20%] rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-[20%] rounded-full single-chart flex items-center justify-center p-3`}
+            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-[${tax}%] rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-[${tax}%] rounded-full single-chart flex items-center justify-center p-3`}
           >
             {tax}%
           </div>
           <div
-            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-[80%] rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-[80%] rounded-full single-chart flex items-center justify-center p-3`}
+            className={theme === 'dark' ? `h-[17.5%] my-[2.5%] w-[${netIncPercentage}%] rounded-full single-chart-dark flex items-center justify-center p-3` : `h-[17.5%] my-[2.5%] w-[${netIncPercentage}%] rounded-full single-chart flex items-center justify-center p-3`}
           >
             {netIncPercentage}%
           </div>

@@ -113,7 +113,14 @@ body {
 
 .delete-expense:hover {
   transition: all 0.1s ease-in-out;
-  box-shadow: inset 3px 3px 7.5px 0px rgba(134, 134, 135, 0.75);
+  box-shadow: inset 3px 3px 5px 0px rgba(134, 134, 135, 0.75),
+  -3px -2px 5px 1px rgba(255, 255, 255, 1);
+}
+
+.delete-expense-dark:hover {
+  transition: all 0.1s ease-in-out;
+  box-shadow: inset 3px 3px 7.5px 0px rgba(0, 0, 0, 0.5),
+  inset -3px -2px 3px 1px rgba(255, 255, 255, 0.05);
 }
 
 .calculate-button {

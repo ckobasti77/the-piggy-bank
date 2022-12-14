@@ -12,7 +12,11 @@ const Table = ({
   monthlyExpenses,
   weeklyExpenses,
   dialyExpenses,
-  theme
+  theme,
+  annualNet,
+  monthlyNet,
+  weeklyNet,
+  dialyNet
 }) => {
   return (
     <div className={theme === 'dark' ? "w-full h-[68%] mt-2 mb-4 mx-4 text-[0.7rem] rounded-2xl table-dark" : "w-full h-[68%] mt-2 mb-4 mx-4 text-[0.7rem] rounded-2xl table"}>
@@ -50,7 +54,7 @@ const Table = ({
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
           {`${
-            (annualGross - ((parseInt(tax) / 100) * annualGross)).toFixed(2)
+            (annualNet).toFixed(2)
           }${currency}`}
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
@@ -72,7 +76,7 @@ const Table = ({
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
           {`${
-             (monthlyGross - ((parseInt(tax) / 100) * monthlyGross)).toFixed(2)
+             (monthlyNet).toFixed(2)
           }${currency}`}
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
@@ -94,7 +98,7 @@ const Table = ({
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
           {`${
-            (weeklyGross - ((parseInt(tax) / 100) * weeklyGross)).toFixed(2)
+            (weeklyNet).toFixed(2)
           }${currency}`}
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
@@ -116,7 +120,7 @@ const Table = ({
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">
           {`${
-             (dialyGross - ((parseInt(tax) / 100) * dialyGross)).toFixed(2)
+             (dialyNet).toFixed(2)
           }${currency}`}
         </span>
         <span className="w-[16%] mx-[2%] h-full flex justify-center items-center font-thin">

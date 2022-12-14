@@ -16,6 +16,11 @@ const Main = ({ theme }) => {
   const [weeklyGross, setWeeklyGross] = useState("");
   const [dialyGross, setDialyGross] = useState("");
 
+  const [annualNet, setAnnualNet] = useState("");
+  const [monthlyNet, setMonthlyNet] = useState("");
+  const [weeklyNet, setWeeklyNet] = useState("");
+  const [dialyNet, setDialyNet] = useState("");
+
   const [totalExpenses, setTotalExpenses] = useState(0);
 
   const [annualExpenses, setAnnualExpenses] = useState(0);
@@ -79,7 +84,6 @@ const Main = ({ theme }) => {
       } else if (parseInt(annualGross) >= 15000) {
         setTax("30");
       }
-
     } else if (timespan === "monthly") {
       if (parseInt(monthlyGross) * 12 < 5000) {
         setTax("10");
@@ -105,28 +109,38 @@ const Main = ({ theme }) => {
     }
   }, [annualGross, timespan, totalExpenses, salary, calculated]);
 
-  
   useEffect(() => {
-    if (timespan === "annual") {
-      setNetIncPercentage(
-        parseInt(
-          ((annualGross - (tax / 100) * annualGross) / annualGross) * 100
-        )
-      );
-    } else if (timespan === "monthly") {
-      setNetIncPercentage(
-        parseInt(
-          ((monthlyGross - (tax / 100) * monthlyGross) / monthlyGross) * 100
-        )
-      );
-    } else if (timespan === "weekly") {
-      setNetIncPercentage(
-        parseInt(
-          ((weeklyGross - (tax / 100) * weeklyGross) / weeklyGross) * 100
-        )
-      );
-    }
-  }, [tax, calculated]);
+      setAnnualNet(annualGross - ((tax / 100) * annualGross));
+      setMonthlyNet(monthlyGross - ((tax / 100) * monthlyGross));
+      setWeeklyNet(weeklyGross - ((tax / 100) * weeklyGross));
+      setDialyNet((weeklyGross - ((tax / 100) * weeklyGross)) / 7)
+  }, [tax, annualGross, monthlyGross, weeklyGross, calculated])
+
+  useEffect(() => {
+    setNetIncPercentage((annualNet / annualGross) * 100)
+  }, [annualNet, annualGross, calculated])
+  
+  // useEffect(() => {
+  //   if (timespan === "annual") {
+  //     setNetIncPercentage(
+  //       parseInt(
+  //         ((annualGross - (tax / 100) * annualGross) / annualGross) * 100
+  //       )
+  //     );
+  //   } else if (timespan === "monthly") {
+  //     setNetIncPercentage(
+  //       parseInt(
+  //         ((monthlyGross - (tax / 100) * monthlyGross) / monthlyGross) * 100
+  //       )
+  //     );
+  //   } else if (timespan === "weekly") {
+  //     setNetIncPercentage(
+  //       parseInt(
+  //         ((weeklyGross - (tax / 100) * weeklyGross) / weeklyGross) * 100
+  //       )
+  //     );
+  //   }
+  // }, [tax, calculated]);
   
   useEffect(() => {
     if (timespan === "annual") {
@@ -215,6 +229,10 @@ const Main = ({ theme }) => {
               weeklyExpenses={weeklyExpenses}
               dialyExpenses={dialyExpenses}
               theme={theme}
+              annualNet={annualNet}
+              monthlyNet={monthlyNet}
+              weeklyNet={weeklyNet}
+              dialyNet={dialyNet}
             />
             <div className="h-[30%] w-full rounded-2xl flex justify-between mt-1">
               <div
@@ -277,7 +295,7 @@ const Main = ({ theme }) => {
           </div>
         )}
         <div className={theme === 'dark' ? "main-center-dark h-[90%] w-[1%] my-auto rounded-full bg-white dark:bg-[#131419]" : "main-center h-[90%] w-[1%] my-auto rounded-full bg-white dark:bg-[#131419]"}></div>
-        <div className="h-full main-right p-6 flex justify-center w-[39.5%]">
+        <div className="max-h-full main-right p-6 flex justify-center w-[39.5%]">
           <Calculator
             currency={currency}
             timespan={timespan}
